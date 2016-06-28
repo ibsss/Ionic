@@ -1,0 +1,24 @@
+<ion-view view-title="Dashboard">
+    <ion-nav-buttons side="right">
+        <button class="button icon-left ion-log-out button-positive" ng-click="logout()"></button>
+    </ion-nav-buttons>
+    <ion-content class="padding">
+        <ion-refresher pulling-text="Pull to refresh..." on-refresh="doRefresh()">
+        </ion-refresher>
+        <div ng-controller="DashCtrl as _this">
+            <h1 class="csc-heading">Dept Overview</h1>
+
+            <canvas tc-chartjs-line chart="_this.temperatureChart" chart-options="_this.Options" chart-data="_this.tempData"></canvas>
+            &nbsp;
+            <div class="center-div">
+                <div tc-chartjs-legend chart-legend="legend"></div>
+            </div>
+
+            <canvas tc-chartjs-line chart="_this.pulseChart" chart-options="_this.Options" chart-data="_this.pulseData"></canvas>
+            &nbsp;
+            <div class="center-div">
+                <div tc-chartjs-legend chart-legend="legend"></div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

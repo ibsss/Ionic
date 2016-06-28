@@ -1,0 +1,249 @@
+/* Empty. Add your own CSS if you like */
+
+.offline {
+    background-color: red;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    margin: 20px;
+}
+
+.tc-chart-js-legend {
+    width: 100%;
+    list-style-type: none;
+    padding-left: 0px;
+}
+
+.center-div {
+    display: inline;
+    padding: 50px;
+}
+
+.tc-chart-js-legend li {
+    display: inline-table;
+    float: left;
+    clear: none;
+    padding: 3px;
+}
+
+.tc-chart-js-legend li span {
+    width: 20px;
+    height: 20px;
+    display: inline-table;
+    float: left;
+    margin-right: 10px;
+}
+
+.allergyTitle {
+    width: 100% !important;
+    color: green;
+    align-content: center;
+}
+
+.allergyHead {
+    width: 25%;
+    color: gray;
+    display: inline-block;
+    font-size: 12px;
+}
+
+.allergyContents {
+    width: 75%;
+    display: inline-block;
+    font-size: 12px;
+}
+
+.episodeHead {
+    width: 15%;
+    color: gray;
+    display: inline-block;
+}
+
+.patDetailsHead {
+    width: 25%;
+    color: gray;
+    display: inline-block;
+}
+
+.patDetailsContents {
+    width: 50%;
+    color: gray;
+    display: inline-block;
+}
+
+.episodeContents {
+    text-overflow: ellipsis;
+    width: 35%;
+    display: inline-block;
+    font-size: 12px;
+}
+
+.medHead {
+    width: 30%;
+    display: inline-block;
+    font-size: calc(100%);
+}
+
+.medContents {
+    width: 70%;
+    height: auto;
+    display: inline-block;
+    font-size: calc(100% + 0.1vw);
+}
+
+.medColumns {
+    width: 40%;
+    display: inline-block;
+    font-size: calc(100% + 0.1vw);
+}
+
+.plColumns1 {
+    width: 30%;
+    display: inline-block;
+    font-size: 12px;
+}
+
+.plColumns11 {
+    width: 30%;
+    display: inline-block;
+    font-size: calc(100%);
+    font-weight: bold;
+}
+
+.plColumns12 {
+    width: 30%;
+    display: inline-block;
+    font-size: calc(100%);
+    font-style: italic;
+}
+
+.plColumns2 {
+    width: 60%;
+    display: inline-block;
+    font-size: calc(100%);
+}
+
+.medColumns2 {
+    width: 50%;
+    display: inline-block;
+    font-size: calc(100% + 0.1vw);
+}
+
+.medComplete {
+    background-color: red;
+    color: white;
+    font-weight: bold;
+    font-size: calc(100% + 0.1vw);
+}
+
+.medEnds {
+    font-size: calc(100% + 0.1vw);
+    display: inline-block;
+}
+
+.margin10 {
+    margin: 10px;
+}
+
+.patientBannerMale {
+    background-color: #1D427F;
+    font-weight: bold;
+    color: white;
+    width: 100%;
+    padding: 10px;
+}
+
+.patientBannerFemale {
+    background-color: lightpink;
+    font-weight: bold;
+    color: black;
+    width: 100%;
+    padding: 10px;
+}
+
+.patientBannerUnknown {
+    background-color: lightgray;
+    font-weight: bold;
+    color: black;
+    width: 100%;
+    padding: 10px;
+}
+
+.nonPatientBanner {
+    background-color: gray;
+    font-weight: bold;
+    color: white;
+    font-size: calc(100% + 0.1vw);
+    width: 100%;
+    padding: 5px;
+}
+
+.greyBackground {
+    background-color: gray;
+    color: white;
+}
+
+#csc .item {
+    padding: 0px;
+    margin: 5px 10px 15px 10px;
+    white-space: nowrap;
+}
+
+.csc-heading {
+    text-align: center;
+    color: #444;
+}
+
+.button-fixed-width {
+    width: 30%;
+}
+
+.vlargeEWSLow1 {
+    margin: 10px 10px 10px 10px;
+    padding: 30px 10px 30px 10px;
+    font-size: 30px;
+    font-family: sans-serif;
+    background-color: lightgreen;
+    color: black;
+    align-content: center;
+}
+
+.vlargeEWSLow2 {
+    margin: 10px 10px 10px 10px;
+    padding: 30px 10px 30px 10px;
+    font-size: 30px;
+    font-family: sans-serif;
+    background-color: lightgreen;
+    color: red;
+    align-content: center;
+}
+
+.vlargeEWSMed1 {
+    margin: 10px 10px 10px 10px;
+    padding: 30px 10px 30px 10px;
+    font-size: 30px;
+    font-family: sans-serif;
+    background-color: darkorange;
+    color: black;
+    align-content: center;
+}
+
+.vlargeEWSMed2 {
+    margin: 10px 10px 10px 10px;
+    padding: 30px 10px 30px 10px;
+    font-size: 30px;
+    font-family: sans-serif;
+    background-color: darkorange;
+    color: red;
+    align-content: center;
+}
+
+.vlargeEWS {
+    margin: 10px 10px 10px 10px;
+    padding: 30px 10px 30px 10px;
+    font-size: 30px;
+    font-family: sans-serif;
+    background-color: orangered;
+    color: black;
+    align-content: center;
+}

@@ -1,0 +1,38 @@
+<ion-view view-title="Patients" ng-controller="PatientsCtrl as _this">
+    <ion-nav-buttons side="right">
+        <button class="button icon-left ion-log-out button-positive" ng-click="logout()"></button>
+    </ion-nav-buttons>
+    <ion-content>
+        <label class="item item-input">
+            <i class="icon ion-search placeholder-icon"></i>
+            <input type="search" placeholder="Search" ng-model="Search" />
+        </label>
+
+        <ion-refresher pulling-text="Pull to refresh..." on-refresh="doRefresh()">
+        </ion-refresher>
+        <div class="offline" ng-if="_this.offline == true">LAST UPDATED {{_this.refreshDT | date: 'dd-MMM-yyyy HH:mm'}}</div>
+
+        <div class="list">
+            <div ng-repeat="patient in _this.patients | filter: Search" type="item-text-wrap">
+                <ion-item ng-click="clickPatient(patient.patient._internalId)">
+                    <h2>
+                        {{patient.patient._surname | uppercase }}, {{patient.patient._forename | titleCase }}
+                    </h2>
+                    <div ng-if="patient.patient._nhsno">
+                        <div class="plColumns1">{{patient.patient._nhsno}}</div>
+                    </div>
+                    <div>
+                        <div class="plColumns1">{{patient.patient._personId}}</div>
+                        <div class="plColumns1">{{patient.patient._DoB | date:'dd-MMM-yyyy'}}</div>
+                        <div class="plColumns1">{{patient.patient._Sex}}</div>
+                    </div>
+                    <div ng-if="patient.vitals._VitalDateTime">
+                        <div class="plColumns1">Last Vitals</div>
+                        <div class="plColumns1">{{patient.vitals._VitalDateTime | date:'dd-MMM-yyyy hh:mm'}}</div>
+                    </div>
+                </ion-item>
+
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

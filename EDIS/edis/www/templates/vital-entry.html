@@ -1,0 +1,67 @@
+<!--
+  This template loads for the 'tab.friend-detail' state (app.js)
+  'friend' is a $scope variable created in the FriendsCtrl controller (controllers.js)
+  The FriendsCtrl pulls data from the Friends service (service.js)
+  The Friends service returns an array of friend data
+-->
+<ion-view view-title="Vital Entry Details" ng-controller="PatientsVitalCtrl as _this">
+    <ion-nav-buttons side="right">
+        <button class="button icon-left ion-log-out button-positive" ng-click="logout()"></button>
+    </ion-nav-buttons>
+    <ion-nav-back-button></ion-nav-back-button>
+    <ion-header-bar class="bar-subheader item-input-inset">
+        <span ng-class="patientGender(_this.vitalsDetail)">
+            <div>
+             {{_this.vitalsDetail.patient._surname | uppercase }}, {{_this.vitalsDetail.patient._forename | titleCase}}
+                </div>
+           <div>
+               <div class="plColumns1">{{_this.vitalsDetail.patient._DoB | date: 'dd-MMM-yyyy'}}</div>
+               <div class="plColumns1">{{_this.vitalsDetail.patient._personId}}</div>
+               <div class="plColumns1">{{_this.vitalsDetail.patient._nhsno}}</div>
+            </div>
+        </span>
+    </ion-header-bar>
+    <ion-content class="padding">
+        <div ng-if="_this.loaded == true">
+
+            <ionic-datepicker input-obj="datepickerObject">
+                <button class="button button-positive"> {{datepickerObject.inputDate | date:'dd-MMM-yyyy'}}</button>
+            </ionic-datepicker>
+            <ionic-timepicker input-obj="timePickerObject">
+                <button class="button button-positive overflowShow">
+                    <standard-time-meridian etime='timePickerObject.inputEpochTime'>{{timepickerObject.inputEpochTime | date:'HH:mm'}}</standard-time-meridian>
+                </button>
+            </ionic-timepicker>
+
+            <div class="range range-assertive">
+                <i class="icon ion-thermometer"></i>
+                <input type="range" min="20" max="45" step="0.1" value="{{temperature.Value}}" ng-model="temperature.Value" ng-change="changeField()">
+                <button class="button button-positive button-fixed-width" ng-click="enterTemperature()">{{temperature.Value}}&deg;C</button>
+            </div>
+            <div class="range range-positive">
+                <i class="icon ion-ios-pulse"></i>
+                <input type="range" min="1" max="300" value="{{pulse.Value}}" ng-model="pulse.Value" ng-change="changeField()">
+                <button class="button button-positive button-fixed-width" ng-click="enterPulse()">{{pulse.Value}}bpm</button>
+            </div>
+            <div class="range range-assertive">
+                Resp
+                <input type="range" min="1" max="99" value="{{resp.Value}}" ng-model="resp.Value" ng-change="changeField()">
+                <button class="button button-positive button-fixed-width" ng-click="enterResp()">{{resp.Value}}bpm</button>
+            </div>
+            <div class="range range-positive">
+                Sys
+                <input type="range" min="1" max="300" value="{{sys.Value}}" ng-model="sys.Value" ng-change="changeField()">
+                <button class="button button-positive button-fixed-width" ng-click="enterSys()">{{sys.Value}}</button>
+            </div>
+            <div class="range range-assertive">
+                Dia
+                <input type="range" min="1" max="200" value="{{dia.Value}}" ng-model="dia.Value" ng-change="changeField()">
+                <button class="button button-positive button-fixed-width" ng-click="enterDia()">{{dia.Value}}</button>
+            </div>
+        </div>
+
+        <button class="button button-full button-balanced" ng-disabled="disableSubmit" ng-click="recordVitals(_this.vitalsDetail.patient._internalId)">Submit</button>
+        <button class="button button-full button-assertive" ng-click="cancelVitals(_this.vitalsDetail.patient._internalId)">Cancel</button>
+
+    </ion-content>
+</ion-view>

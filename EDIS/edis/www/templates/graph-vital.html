@@ -1,0 +1,43 @@
+<ion-view view-title="Vital Details" ng-controller="PatientsGraphCtrl as _this">
+    <ion-nav-buttons side="right">
+        <button class="button icon-left ion-log-out button-positive" ng-click="logout()"></button>
+    </ion-nav-buttons>
+    <ion-nav-back-button></ion-nav-back-button>
+    <ion-header-bar class="bar-subheader item-input-inset">
+        <span ng-class="patientGender(_this.vitalsPatDetail)">
+            <div>
+             {{_this.vitalsPatDetail.patient._surname | uppercase }}, {{_this.vitalsPatDetail.patient._forename | titleCase}}
+                </div>
+           <div>
+               <div class="plColumns1">{{_this.vitalsPatDetail.patient._DoB | date: 'dd-MMM-yyyy'}}</div>
+               <div class="plColumns1">{{_this.vitalsPatDetail.patient._personId}}</div>
+               <div class="plColumns1">{{_this.vitalsPatDetail.patient._nhsno}}</div>
+            </div>
+        </span>
+    </ion-header-bar>
+    <ion-content class="padding">
+        <ion-refresher pulling-text="Pull to refresh..." on-refresh="doRefresh()">
+        </ion-refresher>
+        <div ng-if="_this.loaded == true">
+            <button class="button button-full button-assertive" ng-click="cancelVitals(_this.vitalsPatDetail.patient._internalId)">Close</button>
+            <div>
+                <canvas tc-chartjs-line chart="_this.temperatureChart" chart-options="_this.tempOptions" chart-data="_this.tempData" chart-legend="legend"></canvas>
+                <div tc-chartjs-legend chart-legend="legend"></div>
+                <div>&nbsp;</div>
+                <canvas tc-chartjs-line chart="_this.pulseChart" chart-options="_this.pulseOptions" chart-data="_this.pulseData" chart-legend="pulselegend"></canvas>
+                <div tc-chartjs-legend chart-legend="pulselegend"></div>
+                <div>&nbsp;</div>
+                <canvas tc-chartjs-line chart="_this.respChart" chart-options="_this.respOptions" chart-data="_this.respData" chart-legend="resplegend"></canvas>
+                <div tc-chartjs-legend chart-legend="resplegend"></div>
+                <div>&nbsp;</div>
+                <canvas tc-chartjs-line chart="_this.BPChart" chart-options="_this.BPOptions" chart-data="_this.BPData" chart-legend="bplegend"></canvas>
+                <div tc-chartjs-legend chart-legend="bplegend"></div>
+            </div>
+        </div>
+
+        <div>&nbsp;</div>
+
+        <button class="button button-full button-assertive" ng-click="cancelVitals(_this.vitalsPatDetail.patient._internalId)">Close</button>
+
+    </ion-content>
+</ion-view>

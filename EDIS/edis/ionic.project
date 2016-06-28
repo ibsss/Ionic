@@ -1,0 +1,10 @@
+{
+  "name": "Vitals",
+  "app_id": "",
+  "proxies": [
+   {
+    "path": "/api",
+    "proxyUrl": "http://159.170.75.24"
+   }
+  ]
+}

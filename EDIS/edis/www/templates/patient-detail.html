@@ -1,0 +1,64 @@
+<ion-view view-title="Patient Details" ng-controller="PatientDetailCtrl as _this">
+    <ion-nav-buttons side="right">
+        <button class="button icon-left ion-log-out button-positive" ng-click="logout()"></button>
+    </ion-nav-buttons>
+    <ion-nav-back-button></ion-nav-back-button>
+    <ion-header-bar class="bar-subheader item-input-inset">
+        <span ng-class="patientGender(_this.patientDetail)">
+            <div>
+             {{_this.patientDetail.patient._surname | uppercase | truncate: 30}}, {{_this.patientDetail.patient._forename | titleCase | truncate: 30}}
+                </div>
+           <div>
+               <div class="plColumns1">{{_this.patientDetail.patient._DoB | date: 'dd-MMM-yyyy'}}</div>
+               <div class="plColumns1">{{_this.patientDetail.patient._personId}}</div>
+               <div class="plColumns1">{{_this.patientDetail.patient._nhsno}}</div>
+            </div>
+        </span>
+    </ion-header-bar>
+    <ion-content class="padding">
+        <ion-refresher pulling-text="Pull to refresh..." on-refresh="doRefresh()">
+        </ion-refresher>
+
+        <div ng-if="_this.loaded == true">
+            <div class="offline" ng-if="_this.offline == true">LAST UPDATED {{_this.refreshDT | date: 'dd-MMM-yyyy HH:mm'}}</div>
+
+            <div>
+                <div class="plColumns11">Attendance</div>
+                <div class="plColumns2">{{_this.patientDetail.Attendance._ArrivalDT | date: 'dd-MMM-yyyy HH:mm'}}</div>
+            </div>
+            <div ng-if="_this.patientDetail.Attendance._TRDesc">
+                <div class="plColumns1"></div>
+                <div class="plColumns2">{{_this.patientDetail.Attendance._TRDesc | truncate: 40}}</div>
+            </div>
+            <div ng-show="_this.patientDetail.Attendance._TreatDoc">
+                <div class="plColumns12">Doctor</div>
+                <div class="plColumns2">{{_this.patientDetail.Attendance._TreatDoc | truncate: 40}}</div>
+            </div>
+            <div ng-show="_this.patientDetail.Attendance._locDesc">
+                <div class="plColumns12">Location</div>
+                <div class="plColumns2">{{_this.patientDetail.Attendance._locDesc}}</div>
+            </div>
+            <div>
+                <div class="plColumns1"></div>
+            </div>
+            <div ng-if="_this.patientDetail.Vitals._VitalDateTime">
+                <div class="plColumns11">Vitals</div>
+                <div class="plColumns2">{{_this.patientDetail.Vitals._VitalDateTime | date: 'dd-MMM-yyyy HH:mm'}}</div>
+                <div class="plColumns12">Temperature</div>
+                <div class="plColumns2">{{_this.patientDetail.Vitals._Temperature}}&nbsp;&deg;C</div>
+                <div class="plColumns12">Pulse</div>
+                <div class="plColumns2">{{_this.patientDetail.Vitals._Pulse}} bpm</div>
+                <div class="plColumns12">Respiratory</div>
+                <div class="plColumns2">{{_this.patientDetail.Vitals._RespRate}} bpm</div>
+                <div class="plColumns12">Blood Pressure</div>
+                <div class="plColumns2">{{_this.patientDetail.Vitals._SysBP}} / {{_this.patientDetail.Vitals._DiaBP}} mmHg</div>
+                <button class="button button-full button-balanced" ng-click="graphVitals(_this.patientDetail.patient._internalId)">Graph Vitals</button>
+            </div>
+            <button class="button button-full button-assertive" ng-click="recordVitals(_this.patientDetail.patient._internalId)">Record Vitals</button>
+            <button class="button button-full button-positive" ng-click="closeDetails()">Close</button>
+        </div>
+        <div ng-if="_this.loaded == false" class="offline">
+            PATIENT NOT AVAILABLE
+        </div>
+    </ion-content>
+</ion-view>
